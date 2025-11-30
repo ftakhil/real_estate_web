@@ -11,7 +11,7 @@ const WeddingHero = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   const titles = useMemo(
-    () => ["SUSTAINABLE", "AFFORDABLE", "COASTAL", "BEACHFRONT", "ECO-CONSCIOUS"],
+    () => ["SUSTAINABLE", "AFFORDABLE", "COASTAL", "BEACHFRONT"],
     []
   );
   const heroImages = [
@@ -102,7 +102,7 @@ const WeddingHero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-            >              <Button variant="secondary" size="sm" className="gap-4 mb-8 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20">
+            >              <Button variant="secondary" size="sm" className="gap-4 mb-6 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20">
                 Baja California's Premier Community 🌊
               </Button>
             </motion.div>
@@ -112,10 +112,10 @@ const WeddingHero = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 1 }}
-              className="text-4xl md:text-7xl lg:text-8xl max-w-4xl font-cormorant font-light tracking-wide mb-6"
+              className="text-3xl md:text-5xl lg:text-6xl max-w-6xl font-cormorant font-light tracking-wide mb-6"
             >
-              <span className="block mb-4">EXPERIENCE</span>
-              <div className="relative h-20 md:h-24 lg:h-28 flex w-full justify-center overflow-hidden text-center">
+              <span className="block mb-2">EXPERIENCE</span>
+              <div className="relative h-16 md:h-20 lg:h-24 flex w-full justify-center overflow-hidden text-center">
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
@@ -131,8 +131,9 @@ const WeddingHero = () => {
                     {title}
                   </motion.span>
                 ))}
+                <span className="invisible">SUSTAINABLE</span>
               </div>
-              <span className="block mt-4">LIVING</span>
+              <span className="block mt-2">LIVING</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -140,7 +141,7 @@ const WeddingHero = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.8 }}
-              className="text-lg md:text-xl leading-relaxed max-w-2xl mb-12 font-inter font-light opacity-90"
+              className="text-sm md:text-base leading-relaxed max-w-3xl mb-8 font-inter font-light opacity-90"
             >
               Discover budget-friendly, eco-conscious, vibrant coastal living in Baja California.
               Sustainable luxury meets natural beauty in our self-contained, solar-powered beachfront community.
@@ -153,7 +154,7 @@ const WeddingHero = () => {
               transition={{ delay: 1.2, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4"
             >
               {/* Navigation Links */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button
                   variant="outline"
                   className="bg-white text-black hover:bg-black hover:text-white border-2 border-white group px-6 py-3 h-auto"
