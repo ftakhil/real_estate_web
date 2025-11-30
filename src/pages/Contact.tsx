@@ -2,6 +2,8 @@ import Layout from '@/components/Layout';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Instagram, Facebook } from 'lucide-react';
 
+import { logo } from '../assets/imageImports';
+
 const Contact = () => {
   return (
     <Layout>
@@ -9,6 +11,14 @@ const Contact = () => {
         {/* Hero Section */}
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 text-center">
+            <motion.img
+              src={logo}
+              alt="Rancho Costa Verde Logo"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="w-16 mx-auto mb-6"
+            />
             <motion.h1
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}

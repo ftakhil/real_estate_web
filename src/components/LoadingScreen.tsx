@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { logo } from '../assets/imageImports';
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -27,15 +28,21 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         exit={{ opacity: 0 }}
         className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white"
       >
-        <motion.h1 
+        <motion.img
+          src={logo}
+          alt="Rancho Costa Verde Logo"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="w-20 mb-8"
+        />
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-6xl font-cormorant mb-8"
         >
           Rancho Costa Verde
-
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -43,7 +50,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         >
           Are you ready?
         </motion.p>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
@@ -51,7 +58,7 @@ const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
         >
           Your experience is loading...
         </motion.p>
-        <motion.div 
+        <motion.div
           className="w-48 h-1 bg-gray-800 mt-8 rounded-full overflow-hidden"
         >
           <motion.div

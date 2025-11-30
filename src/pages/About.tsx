@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { image25 } from '../assets/imageImports';
+import { image25, logo } from '../assets/imageImports';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('About Us');
@@ -11,6 +11,7 @@ const About = () => {
   const content = {
     'About Us': (
       <div className="max-w-4xl mx-auto text-center">
+        <img src={logo} alt="Rancho Costa Verde Logo" className="w-16 mx-auto mb-6" />
         <h2 className="text-3xl md:text-5xl font-cormorant font-light mb-8">
           Rancho Costa Verde
         </h2>
@@ -58,6 +59,7 @@ const About = () => {
     ),
     'Owner Testimonials': (
       <div className="max-w-4xl mx-auto text-center">
+        <img src={logo} alt="Rancho Costa Verde Logo" className="w-16 mx-auto mb-6" />
         <h2 className="text-3xl md:text-5xl font-cormorant font-light mb-4">
           Owner Testimonials
         </h2>

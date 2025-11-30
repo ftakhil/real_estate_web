@@ -1,33 +1,29 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MoveRight, PhoneCall, ChevronLeft, ChevronRight } from "lucide-react";
+import { MoveRight, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link, useNavigate } from "react-router-dom";
-import { image1, image5, image16, image23 } from '../assets/imageImports';
+import { useNavigate } from "react-router-dom";
+import { image1, image5, image16, image23, logo } from '../assets/imageImports';
 
 const WeddingHero = () => {
   const navigate = useNavigate();
-  const [titleNumber, setTitleNumber] = useState(0);
   const [currentImage, setCurrentImage] = useState(0);
+  const [index, setIndex] = useState(0);
+  const words = ["COASTAL", "AFFORDABLE", "BAJA", "DREAM", "BEACH", "LIFESTYLE"];
 
-  const titles = useMemo(
-    () => ["SUSTAINABLE", "AFFORDABLE", "COASTAL", "BEACHFRONT"],
-    []
-  );
-  const heroImages = [
+  const heroImages = useMemo(() => [
     image1,  // Coastal property
     image5,  // Beach view
     image16, // Community
     image23  // Ocean lifestyle
-  ];
+  ], []);
 
   useEffect(() => {
-    const titleInterval = setInterval(() => {
-      setTitleNumber((prev) => (prev === titles.length - 1 ? 0 : prev + 1));
-    }, 2500);
-
-    return () => clearInterval(titleInterval);
-  }, [titles.length]);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -47,22 +43,22 @@ const WeddingHero = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Image Carousel Background - Fixed to prevent white flash */}
+      {/* Image Carousel Background */}
       <div className="absolute inset-0 bg-black">
-        {heroImages.map((image, index) => (
+        {heroImages.map((image, idx) => (
           <motion.div
-            key={index}
+            key={idx}
             className="absolute inset-0"
             initial={{ opacity: 0 }}
-            animate={{ opacity: currentImage === index ? 1 : 0 }}
+            animate={{ opacity: currentImage === idx ? 1 : 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
           >
             <img
               src={image}
-              alt="Wedding Photography"
+              alt="Rancho Costa Verde Scenery"
               className="w-full h-full object-cover object-center scale-110"
             />
-            <div className="absolute inset-0 bg-black/50" />  {/* Increased overlay opacity for better contrast */}
+            <div className="absolute inset-0 bg-black/40" />
           </motion.div>
         ))}
       </div>
@@ -70,24 +66,24 @@ const WeddingHero = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevImage}
-        className="absolute left-8 top-1/2 transform -translate-y-1/2 z-30 text-white hover:text-white transition-all duration-300 hover:scale-110"
+        className="absolute left-8 top-1/2 transform -translate-y-1/2 z-30 text-white hover:text-white transition-all duration-300 hover:scale-110 hidden md:block"
       >
         <ChevronLeft size={40} />
       </button>
       <button
         onClick={nextImage}
-        className="absolute right-8 top-1/2 transform -translate-y-1/2 z-30 text-white hover:text-white transition-all duration-300 hover:scale-110"
+        className="absolute right-8 top-1/2 transform -translate-y-1/2 z-30 text-white hover:text-white transition-all duration-300 hover:scale-110 hidden md:block"
       >
         <ChevronRight size={40} />
       </button>
 
       {/* Image Indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
-        {heroImages.map((_, index) => (
+        {heroImages.map((_, idx) => (
           <button
-            key={index}
-            onClick={() => setCurrentImage(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImage ? 'bg-white' : 'bg-white/70'  /* Increased inactive dot opacity */
+            key={idx}
+            onClick={() => setCurrentImage(idx)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentImage ? 'bg-white' : 'bg-white/50'
               }`}
           />
         ))}
@@ -97,73 +93,86 @@ const WeddingHero = () => {
       <div className="relative z-20 flex items-center justify-center h-full">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center text-white">
-            {/* Badge */}
-            <motion.div
+            {/* Logo */}
+            <motion.img
+              src={logo}
+              alt="Rancho Costa Verde Logo"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-            >              <Button variant="secondary" size="sm" className="gap-4 mb-6 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20">
-                Baja California's Premier Community 🌊
-              </Button>
-            </motion.div>
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="w-20 mb-8"
+            />
 
-            {/* Main Heading with Animated Text */}
-            <motion.h1
-              initial={{ opacity: 0, y: 50 }}
+            {/* Welcome Text */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 1 }}
-              className="text-3xl md:text-5xl lg:text-6xl max-w-6xl font-cormorant font-light tracking-wide mb-6"
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-yellow-400 tracking-[0.2em] text-sm md:text-base mb-4 font-inter uppercase font-medium"
             >
-              <span className="block mb-2">EXPERIENCE</span>
-              <div className="relative h-16 md:h-20 lg:h-24 flex w-full justify-center overflow-hidden text-center">
-                {titles.map((title, index) => (
-                  <motion.span
-                    key={index}
-                    className="absolute font-medium"
-                    initial={{ opacity: 0, y: 100 }}
-                    transition={{ type: "spring", stiffness: 80, damping: 20 }}
-                    animate={
-                      titleNumber === index
-                        ? { y: 0, opacity: 1 }
-                        : { y: titleNumber > index ? -100 : 100, opacity: 0 }
-                    }
-                  >
-                    {title}
-                  </motion.span>
-                ))}
-                <span className="invisible">SUSTAINABLE</span>
-              </div>
-              <span className="block mt-2">LIVING</span>
+              Welcome To
+            </motion.p>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-cormorant font-normal text-white mb-6"
+            >
+              Rancho Costa Verde
             </motion.h1>
 
-            {/* Subtitle */}
+            {/* Subheading from Image 2 */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1, duration: 0.8 }}
-              className="text-sm md:text-base leading-relaxed max-w-3xl mb-8 font-inter font-light opacity-90"
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="text-lg md:text-2xl font-cormorant font-light text-white/90 mb-8 max-w-4xl"
             >
-              Discover budget-friendly, eco-conscious, vibrant coastal living in Baja California.
-              Sustainable luxury meets natural beauty in our self-contained, solar-powered beachfront community.
+              Baja California's Premier Residential Master Planned Community
             </motion.p>
+
+            {/* Animated Subheading */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1, duration: 0.8 }}
+              className="flex items-center justify-center gap-2 text-lg md:text-xl font-cormorant tracking-widest text-white/90 uppercase"
+            >
+              <span>Experience</span>
+              <div className="relative w-32 h-8 overflow-hidden text-center">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={words[index]}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="absolute inset-0 text-yellow-400 font-semibold"
+                  >
+                    {words[index]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
+              <span>Living</span>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4"
+              transition={{ delay: 1.3, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 mt-12"
             >
-              {/* Navigation Links */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button
-                  variant="outline"
-                  className="bg-white text-black hover:bg-black hover:text-white border-2 border-white group px-6 py-3 h-auto"
-                  onClick={() => navigate('/contact')}
-                >
-                  Schedule Weekend Tour
-                  <MoveRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </div>
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-gray-100 font-inter px-8"
+                onClick={() => navigate('/contact')}
+              >
+                Schedule Weekend Tour
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
             </motion.div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import Layout from '@/components/Layout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { image1, image2, image5, image14, image25 } from '../assets/imageImports';
+import { image1, image2, image5, image14, image25, logo } from '../assets/imageImports';
 
 const Lifestyle = () => {
     const [activeFilter, setActiveFilter] = useState('Activities');
@@ -177,6 +177,14 @@ const Lifestyle = () => {
 
                     <div className="relative z-10 flex items-center justify-center h-full">
                         <div className="container mx-auto px-4 text-center">
+                            <motion.img
+                                src={logo}
+                                alt="Rancho Costa Verde Logo"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8 }}
+                                className="w-16 mx-auto mb-6"
+                            />
                             <motion.h1
                                 initial={{ opacity: 0, y: 50 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -201,8 +209,8 @@ const Lifestyle = () => {
                                         key={filter}
                                         onClick={() => setActiveFilter(filter)}
                                         className={`px-6 py-2 font-inter font-medium transition-all duration-300 ${activeFilter === filter
-                                                ? 'bg-white text-black'
-                                                : 'border border-white text-white hover:bg-white/20'
+                                            ? 'bg-white text-black'
+                                            : 'border border-white text-white hover:bg-white/20'
                                             }`}
                                     >
                                         {filter}

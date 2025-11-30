@@ -3,10 +3,13 @@ import WeddingHero from '@/components/WeddingHero';
 import FeaturedGallery from '@/components/FeaturedGallery';
 import Testimonials from '@/components/Testimonials';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { image1 } from '../assets/imageImports';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
+  const navigate = useNavigate();
+
   return (
     <Layout>
       <WeddingHero />
@@ -72,7 +75,7 @@ const Index = () => {
       <Testimonials />
 
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
+      <section className="py-20 bg-white text-black">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -80,20 +83,28 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-6xl font-cormorant font-light mb-6">
+            <h2 className="text-4xl md:text-5xl font-cormorant font-normal mb-6">
               Ready to Start Your Journey?
             </h2>
-            <p className="text-lg text-gray-300 font-inter max-w-2xl mx-auto mb-12">
-              Experience affordable, sustainable beachfront living like never before. Join us for a weekend tour
-              and discover your coastal paradise in Baja California.
+            <p className="text-xl text-gray-600 font-inter max-w-2xl mx-auto mb-12">
+              Experience affordable, sustainable beachfront living like never before. Join us for a weekend tour and discover your coastal paradise in Baja California.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 bg-white text-black hover:bg-gray-100 transition-all duration-300 font-inter font-medium">
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Button
+                size="lg"
+                className="bg-black text-white hover:bg-gray-800 font-inter px-8"
+                onClick={() => document.getElementById('tour-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Schedule a Tour
-              </button>
-              <button className="px-8 py-3 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 font-inter font-medium">
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-black text-black hover:bg-gray-100 font-inter px-8"
+                onClick={() => navigate('/gallery')}
+              >
                 View Properties
-              </button>
+              </Button>
             </div>
           </motion.div>
         </div>

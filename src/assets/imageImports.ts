@@ -26,6 +26,7 @@ import image24 from './vishnu/24.jpg';
 import image25 from './vishnu/25.jpg';
 import image26 from './vishnu/26.jpg';
 import image27 from './vishnu/27.jpg';
+import logo from './vishnu/rancho_logo.png';
 
 // Videos
 import urumi1 from './vishnu/costal.mp4';
@@ -60,5 +61,6 @@ export {
     image26,
     image27,
     urumi1,
-    urumi
+    urumi,
+    logo
 };

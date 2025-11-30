@@ -1,5 +1,6 @@
 import { Instagram, Facebook, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { logo } from '../assets/imageImports';
 
 const Footer = () => {
   return (
@@ -8,6 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
+            <img src={logo} alt="Rancho Costa Verde Logo" className="w-20 mb-4" />
             <h3 className="text-2xl font-cormorant font-bold">RANCHO COSTA VERDE</h3>
             <p className="text-gray-200 font-inter leading-relaxed">
               Experience affordable, sustainable, and beachfront living in Baja California.
@@ -63,19 +65,6 @@ const Footer = () => {
             <ul className="space-y-2 font-inter">
               <li className="flex items-center space-x-2">
                 <Phone size={16} />
-                <a href="tel:+18002117400" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  +1 (800) 211-7400
-                </a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <Mail size={16} />
-                <a href="mailto:info@RanchoCostaVerde.com" className="text-gray-300 hover:text-white transition-colors duration-300">
-                  info@RanchoCostaVerde.com
-                </a>
-              </li>
-              <li className="flex items-center space-x-2">
-                <MapPin size={16} />
-                <span className="text-gray-300">Baja California, Mexico</span>
               </li>
             </ul>
           </div>
