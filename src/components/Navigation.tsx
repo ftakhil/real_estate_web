@@ -7,6 +7,7 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
   const location = useLocation();
 
   // Pages that have hero sections and should start with transparent navbar
@@ -157,19 +158,39 @@ const Navigation = () => {
                   <div key={item.name}>
                     {item.children ? (
                       <div className="px-6 py-3">
-                        <div className="font-inter font-medium text-black mb-2">{item.name}</div>
-                        <div className="pl-4 space-y-2 border-l-2 border-gray-100">
-                          {item.children.map((child) => (
-                            <Link
-                              key={child.name}
-                              to={child.path}
-                              className="block text-sm text-gray-600 hover:text-black font-inter"
-                              onClick={() => setIsMobileMenuOpen(false)}
+                        <button
+                          onClick={() => setExpandedMobileMenu(expandedMobileMenu === item.name ? null : item.name)}
+                          className="flex items-center justify-between w-full font-inter font-medium text-black mb-2"
+                        >
+                          <span>{item.name}</span>
+                          <ChevronDown
+                            size={16}
+                            className={`transition-transform duration-300 ${expandedMobileMenu === item.name ? 'rotate-180' : ''}`}
+                          />
+                        </button>
+                        <AnimatePresence>
+                          {expandedMobileMenu === item.name && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="overflow-hidden"
                             >
-                              {child.name}
-                            </Link>
-                          ))}
-                        </div>
+                              <div className="pl-4 space-y-2 border-l-2 border-gray-100 py-2">
+                                {item.children.map((child) => (
+                                  <Link
+                                    key={child.name}
+                                    to={child.path}
+                                    className="block text-sm text-gray-600 hover:text-black font-inter"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                  >
+                                    {child.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     ) : (
                       <motion.div

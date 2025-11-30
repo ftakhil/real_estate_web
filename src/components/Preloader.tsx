@@ -4,15 +4,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Memoized ProgressBar to prevent re-renders from count updates
 const ProgressBar = memo(({ phase }: { phase: 'loading' | 'expanded' | 'rotated' | 'split' }) => (
     <motion.div
-        className="absolute bg-white"
-        initial={{ width: 0, height: '1px' }}
+        className="absolute bg-white left-1/2 top-1/2"
+        initial={{ width: 0, height: '1px', x: '-50%', y: '-50%' }}
         animate={{
             width: phase === 'loading' ? '100%' :
                 phase === 'expanded' ? '100vw' :
                     phase === 'rotated' ? '100vh' : '100vh',
             height: phase === 'rotated' || phase === 'split' ? '1px' : '1px',
             rotate: phase === 'rotated' || phase === 'split' ? 90 : 0,
-            opacity: phase === 'split' ? 0 : 1
+            opacity: phase === 'split' ? 0 : 1,
+            x: '-50%',
+            y: '-50%'
         }}
         transition={{
             width: { duration: phase === 'loading' ? 2 : 0.8, ease: phase === 'loading' ? "linear" : [0.76, 0, 0.24, 1] },
@@ -85,7 +87,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.3 }}
                             className="absolute flex flex-col items-center"
-                            style={{ transform: 'translateY(-100px)' }}
+                            style={{ transform: 'translateY(-15vh)' }} // Responsive offset
                         >
                             <div className="flex items-end justify-center mb-4 text-white">
                                 <span className="text-6xl md:text-8xl font-cormorant font-light">

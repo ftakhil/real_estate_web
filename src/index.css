@@ -82,43 +82,49 @@
 
     html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
     }
 
     body {
         @apply bg-background text-foreground font-inter;
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
     }
 
-    /* Custom Cursor */
-    * {
-        cursor: none !important;
-    }
+    /* Custom Cursor - Only on non-touch devices */
+    @media (hover: hover) and (pointer: fine) {
+        * {
+            cursor: none !important;
+        }
 
-    .custom-cursor {
-        position: fixed;
-        opacity: 0;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        mix-blend-mode: difference;
-        width: 50px;
-        margin-left: -25px;
-        margin-top: -25px;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background-color: white;
-        transition-property: transform, scale, opacity;
-        transition-duration: 250ms;
-        transition-timing-function: ease-in-out;
-        scale: 0.3;
-        z-index: 10000;
-    }
+        .custom-cursor {
+            position: fixed;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            width: 50px;
+            margin-left: -25px;
+            margin-top: -25px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background-color: white;
+            transition-property: transform, scale, opacity;
+            transition-duration: 250ms;
+            transition-timing-function: ease-in-out;
+            scale: 0.3;
+            z-index: 10000;
+        }
 
-    .custom-cursor--link {
-        scale: 1;
-    }
+        .custom-cursor--link {
+            scale: 1;
+        }
 
-    .custom-cursor--init {
-        opacity: 1;
+        .custom-cursor--init {
+            opacity: 1;
+        }
     }
 }
 
