@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
-import { logo } from '../assets/imageImports';
 
 interface DevelopmentPageLayoutProps {
     title: string;
@@ -27,14 +26,6 @@ const DevelopmentPageLayout = ({ title, subtitle, heroImage, children }: Develop
 
                 <div className="relative z-10 flex items-center justify-center h-full">
                     <div className="container mx-auto px-4 text-center">
-                        <motion.img
-                            src={logo}
-                            alt="Rancho Costa Verde Logo"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="w-16 mx-auto mb-6"
-                        />
                         <motion.h1
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}

@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MoveRight, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { image1, image5, image16, image13, logo } from '../assets/imageImports';
+import { image1, image3, image4, image14, image13 } from '../assets/imageImports';
 
 const WeddingHero = () => {
   const navigate = useNavigate();
@@ -12,10 +12,11 @@ const WeddingHero = () => {
   const words = ["COASTAL", "AFFORDABLE", "BAJA", "DREAM", "BEACH", "LIFESTYLE"];
 
   const heroImages = useMemo(() => [
-    image1,  // Coastal property
-    image5,  // Beach view
-    image16, // Community
-    image13  // Ocean lifestyle
+    image1,  // im1.jpg - buildings
+    image3,  // im3.png - buildings
+    image4,  // im4.png - buildings
+    image14, // im14.png - outsideview
+    image13  // im13.png - outsideview
   ], []);
 
   useEffect(() => {
@@ -93,26 +94,6 @@ const WeddingHero = () => {
       <div className="relative z-20 flex items-center justify-center h-full">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center text-center text-white">
-            {/* Logo */}
-            <motion.img
-              src={logo}
-              alt="Rancho Costa Verde Logo"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="w-20 mb-8"
-            />
-
-            {/* Welcome Text */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-yellow-400 tracking-[0.2em] text-sm md:text-base mb-4 font-inter uppercase font-medium"
-            >
-              Welcome To
-            </motion.p>
-
             {/* Main Heading */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}

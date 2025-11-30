@@ -84,7 +84,7 @@ const About = () => {
     <Layout>
       <div className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative h-screen overflow-hidden">
+        <section className="relative h-[60vh] overflow-hidden">
           <div className="absolute inset-0">
             <img
               src={image15}

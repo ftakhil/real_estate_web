@@ -53,8 +53,8 @@ const Contact = () => {
                 <Mail className="w-8 h-8 text-gray-800 mb-4" />
                 <h3 className="text-xl font-cormorant mb-2">Email Us</h3>
                 <p className="text-gray-600 font-inter text-center">
-                  <a href="mailto:info@RanchoCostaVerde.com" className="hover:text-gray-800 transition-colors">
-                    info@RanchoCostaVerde.com
+                  <a href="mailto:" className="hover:text-gray-800 transition-colors">
+                    example@gmail.com
                   </a>
                 </p>
               </motion.div>
@@ -69,8 +69,8 @@ const Contact = () => {
                 <Phone className="w-8 h-8 text-gray-800 mb-4" />
                 <h3 className="text-xl font-cormorant mb-2">Call Us</h3>
                 <p className="text-gray-600 font-inter text-center">
-                  <a href="tel:+18002117400" className="hover:text-gray-800 transition-colors">
-                    +1 (800) 211-7400
+                  <a href="tel:" className="hover:text-gray-800 transition-colors">
+                    ###########
                   </a>
                 </p>
               </motion.div>

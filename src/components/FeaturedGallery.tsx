@@ -1,34 +1,34 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { image11, image12, image16, image17, image18, image19 } from '../assets/imageImports';
+import { image13, image15, image20, image17, image1, image19 } from '../assets/imageImports';
 
 const FeaturedGallery = () => {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const galleryImages = [
     {
-      src: image11,
+      src: image13,
       title: "Romantic Ceremony",
       category: "Wedding"
     },
     {
-      src: image12,
+      src: image17,
       title: "Golden Hour Magic",
       category: "Portrait"
     },
     {
-      src: image16,
+      src: image20,
       title: "Intimate Moments",
       category: "Engagement"
     },
     {
-      src: image17,
+      src: image15,
       title: "Joyful Celebration",
       category: "Reception"
     },
     {
-      src: image18,
+      src: image1, 
       title: "Tender Exchange",
       category: "Ceremony"
     },

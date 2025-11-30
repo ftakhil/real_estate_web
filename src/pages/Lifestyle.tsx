@@ -1,12 +1,34 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { image1, image2, image5, image14, image15, logo } from '../assets/imageImports';
+import { image1, image2, image5, image14, image15 } from '../assets/imageImports';
 
 const Lifestyle = () => {
     const [activeFilter, setActiveFilter] = useState('Activities');
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     const filters = ['Activities', 'Area Attractions', 'San Felipe', 'Delicias', 'Events'];
+
+    const heroImages: { [key: string]: string } = {
+        'Activities': image1,
+        'Area Attractions': image5,
+        'San Felipe': image14,
+        'Delicias': image15,
+        'Events': image2
+    };
+
+    const tiles = [0, 1, 2, 3, 4];
+
+    const handleFilterChange = (filter: string) => {
+        if (filter === activeFilter) return;
+        setIsTransitioning(true);
+        setTimeout(() => {
+            setActiveFilter(filter);
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 700);
+        }, 350);
+    };
 
     const content = {
         'Activities': (
@@ -166,24 +188,47 @@ const Lifestyle = () => {
             {/* Hero Section */}
             <section className="relative h-screen overflow-hidden">
                 <div className="absolute inset-0">
-                    <img
-                        src={image1}
-                        alt="Lifestyle at Rancho Costa Verde"
-                        className="w-full h-full object-cover object-center"
-                    />
+                    {/* Tile Transition Overlay */}
+                    <AnimatePresence>
+                        {isTransitioning && (
+                            <div className="absolute inset-0 z-10">
+                                {tiles.map((index) => (
+                                    <motion.div
+                                        key={index}
+                                        className="absolute left-0 h-[20%] bg-black"
+                                        style={{ top: `${index * 20}%`, width: 0 }}
+                                        initial={{ width: 0 }}
+                                        animate={{ width: '100%' }}
+                                        exit={{ width: 0 }}
+                                        transition={{
+                                            duration: 0.7,
+                                            delay: index * 0.1,
+                                            ease: 'easeInOut'
+                                        }}
+                                    />
+                                ))}
+                            </div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Hero Image */}
+                    <AnimatePresence>
+                        <motion.img
+                            key={activeFilter}
+                            src={heroImages[activeFilter]}
+                            alt="Lifestyle at Rancho Costa Verde"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.6, ease: "easeInOut" }}
+                            className="w-full h-full object-cover object-center"
+                        />
+                    </AnimatePresence>
                     <div className="absolute inset-0 bg-black/40" />
                 </div>
 
                 <div className="relative z-10 flex items-center justify-center h-full">
                     <div className="container mx-auto px-4 text-center">
-                        <motion.img
-                            src={logo}
-                            alt="Rancho Costa Verde Logo"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="w-16 mx-auto mb-6"
-                        />
                         <motion.h1
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -206,7 +251,7 @@ const Lifestyle = () => {
                             {filters.map((filter) => (
                                 <button
                                     key={filter}
-                                    onClick={() => setActiveFilter(filter)}
+                                    onClick={() => handleFilterChange(filter)}
                                     className={`px-6 py-2 font-inter font-medium transition-all duration-300 ${activeFilter === filter
                                         ? 'bg-white text-black'
                                         : 'border border-white text-white hover:bg-white/20'

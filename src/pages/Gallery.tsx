@@ -1,6 +1,6 @@
 
 import Layout from '@/components/Layout';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import {
   image1, image2, image3, image4, image5, image6, image7, image8, image9, image10,
@@ -9,8 +9,32 @@ import {
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('Photo Gallery');
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const filters = ['Video Gallery', 'Photo Gallery', 'Home Exteriors', 'Home Interiors', 'Home Special Features', 'Flora & Fauna', 'San Felipe'];
+
+  const heroImages: { [key: string]: string } = {
+    'Video Gallery': image1,
+    'Photo Gallery': image14,
+    'Home Exteriors': image5,
+    'Home Interiors': image16,
+    'Home Special Features': image8,
+    'Flora & Fauna': image11,
+    'San Felipe': image7
+  };
+
+  const tiles = [0, 1, 2, 3, 4];
+
+  const handleFilterChange = (filter: string) => {
+    if (filter === activeFilter) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveFilter(filter);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 700);
+    }, 350);
+  };
 
   const images = [
     // Featured images in specified order
@@ -46,11 +70,42 @@ const Gallery = () => {
         {/* Hero Section */}
         <section className="relative h-screen overflow-hidden">
           <div className="absolute inset-0">
-            <img
-              src={image14}
-              alt="Featured Photography"
-              className="w-full h-full object-cover object-center"
-            />
+            {/* Tile Transition Overlay */}
+            <AnimatePresence>
+              {isTransitioning && (
+                <div className="absolute inset-0 z-10">
+                  {tiles.map((index) => (
+                    <motion.div
+                      key={index}
+                      className="absolute left-0 h-[20%] bg-black"
+                      style={{ top: `${index * 20}%`, width: 0 }}
+                      initial={{ width: 0 }}
+                      animate={{ width: '100%' }}
+                      exit={{ width: 0 }}
+                      transition={{
+                        duration: 0.7,
+                        delay: index * 0.1,
+                        ease: 'easeInOut'
+                      }}
+                    />
+                  ))}
+                </div>
+              )}
+            </AnimatePresence>
+
+            {/* Hero Image */}
+            <AnimatePresence>
+              <motion.img
+                key={activeFilter}
+                src={heroImages[activeFilter]}
+                alt="Featured Photography"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className="w-full h-full object-cover object-center"
+              />
+            </AnimatePresence>
             <div className="absolute inset-0 bg-black/40" />
           </div>
 
@@ -78,7 +133,7 @@ const Gallery = () => {
                 {filters.map((filter) => (
                   <button
                     key={filter}
-                    onClick={() => setActiveFilter(filter)}
+                    onClick={() => handleFilterChange(filter)}
                     className={`px-6 py-2 font-inter font-medium transition-all duration-300 ${activeFilter === filter
                       ? 'bg-white text-black'
                       : 'border border-white text-white hover:bg-white/20'
