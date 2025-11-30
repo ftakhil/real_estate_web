@@ -9,16 +9,16 @@ const WeddingHero = () => {
   const navigate = useNavigate();
   const [titleNumber, setTitleNumber] = useState(0);
   const [currentImage, setCurrentImage] = useState(0);
-  
+
   const titles = useMemo(
-    () => ["TIMELESS", "ELEGANT", "AUTHENTIC", "ROMANTIC", "ETERNAL"],
+    () => ["SUSTAINABLE", "AFFORDABLE", "COASTAL", "BEACHFRONT", "ECO-CONSCIOUS"],
     []
-  );  
+  );
   const heroImages = [
-    image1,  // Wedding
-    image5,  // Pre-wedding
-    image16, // Traditional
-    image23  // Changed from image21 to image23
+    image1,  // Coastal property
+    image5,  // Beach view
+    image16, // Community
+    image23  // Ocean lifestyle
   ];
 
   useEffect(() => {
@@ -87,9 +87,8 @@ const WeddingHero = () => {
           <button
             key={index}
             onClick={() => setCurrentImage(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentImage ? 'bg-white' : 'bg-white/70'  /* Increased inactive dot opacity */
-            }`}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentImage ? 'bg-white' : 'bg-white/70'  /* Increased inactive dot opacity */
+              }`}
           />
         ))}
       </div>
@@ -104,7 +103,7 @@ const WeddingHero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >              <Button variant="secondary" size="sm" className="gap-4 mb-8 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20">
-                Award-Winning Photography ✨
+                Baja California's Premier Community 🌊
               </Button>
             </motion.div>
 
@@ -115,7 +114,7 @@ const WeddingHero = () => {
               transition={{ delay: 0.7, duration: 1 }}
               className="text-4xl md:text-7xl lg:text-8xl max-w-4xl font-cormorant font-light tracking-wide mb-6"
             >
-              <span className="block mb-4">CAPTURING</span>
+              <span className="block mb-4">EXPERIENCE</span>
               <div className="relative h-20 md:h-24 lg:h-28 flex w-full justify-center overflow-hidden text-center">
                 {titles.map((title, index) => (
                   <motion.span
@@ -133,7 +132,7 @@ const WeddingHero = () => {
                   </motion.span>
                 ))}
               </div>
-              <span className="block mt-4">MOMENTS</span>
+              <span className="block mt-4">LIVING</span>
             </motion.h1>
 
             {/* Subtitle */}
@@ -143,24 +142,24 @@ const WeddingHero = () => {
               transition={{ delay: 1, duration: 0.8 }}
               className="text-lg md:text-xl leading-relaxed max-w-2xl mb-12 font-inter font-light opacity-90"
             >
-              Where love stories become timeless art. 
-              Every glance, every touch, every smile—captured with passion and preserved forever.
+              Discover budget-friendly, eco-conscious, vibrant coastal living in Baja California.
+              Sustainable luxury meets natural beauty in our self-contained, solar-powered beachfront community.
             </motion.p>
 
             {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}              className="flex flex-col sm:flex-row gap-4"
+              transition={{ delay: 1.2, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4"
             >
               {/* Navigation Links */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="bg-white text-black hover:bg-black hover:text-white border-2 border-white group px-6 py-3 h-auto"
                   onClick={() => navigate('/contact')}
                 >
-                  Book Your Session
+                  Schedule Weekend Tour
                   <MoveRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>

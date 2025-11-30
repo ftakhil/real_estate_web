@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { image11, image12, image16, image17, image18, image19 } from '../assets/imageImports';
 
@@ -48,8 +49,9 @@ const FeaturedGallery = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
+
           <h2 className="text-4xl md:text-6xl font-cormorant font-light mb-6">
-            Featured Moments
+            Featured Gallery
           </h2>
           <p className="text-lg text-gray-600 font-inter max-w-2xl mx-auto">
             A glimpse into the beautiful stories we've had the privilege to capture
@@ -76,7 +78,7 @@ const FeaturedGallery = () => {
                   whileHover={{ scale: 1.1 }}
                 />
               </div>
-              
+
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
@@ -103,9 +105,11 @@ const FeaturedGallery = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-inter font-medium">
-            View Full Gallery
-          </button>
+          <Link to="/gallery">
+            <button className="px-8 py-3 border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 font-inter font-medium">
+              View Full Gallery
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>

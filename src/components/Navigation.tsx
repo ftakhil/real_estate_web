@@ -7,9 +7,9 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
-  
+
   // Pages that have hero sections and should start with transparent navbar
-  const heroPages = ['/', '/about', '/moments', '/films'];
+  const heroPages = ['/', '/about', '/gallery', '/films'];
   const isHeroPage = heroPages.includes(location.pathname);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Moments', path: '/moments' },
+    { name: 'Gallery', path: '/gallery' },
     { name: 'Films', path: '/films' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -36,18 +36,16 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        shouldShowWhiteBg ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${shouldShowWhiteBg ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="text-2xl font-cormorant font-bold">
-            <span className={`font-cormorant text-xl font-light tracking-widest ${
-              shouldShowWhiteBg ? 'text-black' : 'text-white'
-            }`}>
-              VISHNU M C PHOTOGRAPHY
+            <span className={`font-cormorant text-xl font-light tracking-widest ${shouldShowWhiteBg ? 'text-black' : 'text-white'
+              }`}>
+              RANCHO COSTA VERDE
             </span>
           </Link>
 
@@ -57,23 +55,20 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`font-inter font-medium transition-colors duration-300 relative group ${
-                  shouldShowWhiteBg ? 'text-black hover:text-gray-800' : 'text-white hover:text-gray-100'
-                } ${location.pathname === item.path ? 'opacity-100' : 'opacity-95'}`}
+                className={`font-inter font-medium transition-colors duration-300 relative group ${shouldShowWhiteBg ? 'text-black hover:text-gray-800' : 'text-white hover:text-gray-100'
+                  } ${location.pathname === item.path ? 'opacity-100' : 'opacity-95'}`}
               >
                 {item.name}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
-                  shouldShowWhiteBg ? 'bg-black' : 'bg-white'
-                } ${location.pathname === item.path ? 'w-full' : ''}`} />
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${shouldShowWhiteBg ? 'bg-black' : 'bg-white'
+                  } ${location.pathname === item.path ? 'w-full' : ''}`} />
               </Link>
             ))}
             <a
-              href="tel:+1234567890"
-              className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${
-                shouldShowWhiteBg 
-                  ? 'bg-black text-white hover:bg-gray-800' 
-                  : 'bg-white text-black hover:bg-gray-100'
-              }`}
+              href="tel:+18002117400"
+              className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${shouldShowWhiteBg
+                ? 'bg-black text-white hover:bg-gray-800'
+                : 'bg-white text-black hover:bg-gray-100'
+                }`}
             >
               <Phone size={16} />
               <span className="font-inter font-medium">Call</span>
@@ -83,9 +78,8 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`md:hidden p-2 transition-colors duration-300 ${
-              shouldShowWhiteBg ? 'text-black' : 'text-white'
-            }`}
+            className={`md:hidden p-2 transition-colors duration-300 ${shouldShowWhiteBg ? 'text-black' : 'text-white'
+              }`}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -124,7 +118,7 @@ const Navigation = () => {
                   className="px-6 py-3"
                 >
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+18002117400"
                     className="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 w-fit"
                   >
                     <Phone size={16} />

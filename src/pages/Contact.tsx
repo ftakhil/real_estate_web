@@ -15,7 +15,7 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
               className="text-4xl md:text-6xl font-cormorant font-light mb-6"
             >
-              Let's Connect
+              Get in Touch
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -23,7 +23,8 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-lg text-gray-600 font-inter mb-12 max-w-2xl mx-auto"
             >
-              Ready to tell your story? We'd love to hear about your special day and discuss how we can capture your unique love story.
+              Ready to experience sustainable coastal living in Baja California?
+              Contact us to schedule a weekend tour or learn more about available properties.
             </motion.p>
           </div>
         </section>
@@ -42,8 +43,8 @@ const Contact = () => {
                 <Mail className="w-8 h-8 text-gray-800 mb-4" />
                 <h3 className="text-xl font-cormorant mb-2">Email Us</h3>
                 <p className="text-gray-600 font-inter text-center">
-                  <a href="mailto:hello@vishnumcphotography.com" className="hover:text-gray-800 transition-colors">
-                    hello@vishnumcphotography.com
+                  <a href="mailto:info@RanchoCostaVerde.com" className="hover:text-gray-800 transition-colors">
+                    info@RanchoCostaVerde.com
                   </a>
                 </p>
               </motion.div>
@@ -58,8 +59,8 @@ const Contact = () => {
                 <Phone className="w-8 h-8 text-gray-800 mb-4" />
                 <h3 className="text-xl font-cormorant mb-2">Call Us</h3>
                 <p className="text-gray-600 font-inter text-center">
-                  <a href="tel:+919846842162" className="hover:text-gray-800 transition-colors">
-                    +91 9846842162
+                  <a href="tel:+18002117400" className="hover:text-gray-800 transition-colors">
+                    +1 (800) 211-7400
                   </a>
                 </p>
               </motion.div>
@@ -74,7 +75,7 @@ const Contact = () => {
                 <MapPin className="w-8 h-8 text-gray-800 mb-4" />
                 <h3 className="text-xl font-cormorant mb-2">Visit Us</h3>
                 <p className="text-gray-600 font-inter text-center">
-                  Kerala, India
+                  Baja California, Mexico
                 </p>
               </motion.div>
             </div>
@@ -86,10 +87,10 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex justify-center gap-6 mt-16"
             >
-              <a href="https://www.instagram.com/vishnu_m.c/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white shadow-sm hover:shadow-md transition-shadow">
+              <a href="https://www.instagram.com/ranchocostaverde/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white shadow-sm hover:shadow-md transition-shadow">
                 <Instagram className="w-6 h-6 text-gray-800" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white shadow-sm hover:shadow-md transition-shadow">
+              <a href="https://www.facebook.com/ranchocostaverde/" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white shadow-sm hover:shadow-md transition-shadow">
                 <Facebook className="w-6 h-6 text-gray-800" />
               </a>
             </motion.div>
