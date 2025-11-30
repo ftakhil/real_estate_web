@@ -6,22 +6,19 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Sarah & Michael",
-      wedding: "Destination Wedding",
-      content: "Working with Vishnu M C Photography was the best decision we made for our wedding. They captured every special moment beautifully.",
+      content: "Rancho Costa Verde is absolutely breathtaking! The property is peaceful, beautifully maintained, and surrounded by stunning natural views. The staff is friendly, the amenities are top-notch, and the overall experience is relaxing and refreshing. Highly recommended!",
       rating: 5,
       image: image20
     },
     {
       name: "Emma & James",
-      wedding: "Garden Wedding",
-      content: "The attention to detail and creativity in every shot is amazing. Our photos are everything we dreamed of and more.",
+      content: "I had an amazing experience at Rancho Costa Verde. The location is peaceful and scenic — perfect for anyone looking to unwind and reconnect with nature. The team here is incredibly welcoming and attentive, ensuring every part of the stay feels comfortable and enjoyable.",
       rating: 5,
       image: image19
     },
     {
       name: "Rachel & David",
-      wedding: "Beach Wedding",
-      content: "The photos capture not just the moments, but the emotions and atmosphere of our special day. Absolutely stunning work!",
+      content: "My stay at Rancho Costa Verde was beyond what I expected. From the moment I arrived, I felt calm, safe, and connected to nature. The atmosphere is serene, the landscape is stunning, and the staff treats you like family. I left feeling refreshed and inspired. I’d give it 10/10!",
       rating: 5,
       image: image18
     }
@@ -75,9 +72,6 @@ const Testimonials = () => {
                   <h4 className="font-cormorant font-semibold text-lg">
                     {testimonial.name}
                   </h4>
-                  <p className="text-gray-500 font-inter text-sm">
-                    {testimonial.wedding}
-                  </p>
                 </div>
               </div>
             </motion.div>

@@ -9,33 +9,33 @@ const FeaturedGallery = () => {
   const galleryImages = [
     {
       src: image13,
-      title: "Romantic Ceremony",
-      category: "Wedding"
+      title: "arora",
+      category: "night"
     },
     {
       src: image17,
-      title: "Golden Hour Magic",
-      category: "Portrait"
+      title: "costal view",
+      category: "costal"
     },
     {
       src: image20,
-      title: "Intimate Moments",
-      category: "Engagement"
+      title: "plantation",
+      category: "plantation"
     },
     {
       src: image15,
-      title: "Joyful Celebration",
-      category: "Reception"
+      title: "Joyful ",
+      category: "-.-"
     },
     {
       src: image1, 
-      title: "Tender Exchange",
-      category: "Ceremony"
+      title: "house",
+      category: "interior"
     },
     {
       src: image19,
-      title: "Traditional Beauty",
-      category: "Portrait"
+      title: "seaside",
+      category: "view"
     }
   ];
 
