@@ -9,6 +9,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
+import Lifestyle from "./pages/Lifestyle";
 import Films from "./pages/Films";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -46,6 +47,7 @@ const App = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/gallery" element={<Gallery />} />
+                <Route path="/lifestyle" element={<Lifestyle />} />
                 <Route path="/films" element={<Films />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
