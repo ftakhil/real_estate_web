@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import ContactModal from './ContactModal';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState<string | null>(null);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const location = useLocation();
 
   // Pages that have hero sections and should start with transparent navbar
@@ -122,8 +124,8 @@ const Navigation = () => {
                 )}
               </div>
             ))}
-            <Link
-              to="/contact"
+            <button
+              onClick={() => setIsContactModalOpen(true)}
               className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 ${shouldShowWhiteBg
                 ? 'bg-black text-white hover:bg-gray-800'
                 : 'bg-white text-black hover:bg-gray-100'
@@ -131,7 +133,7 @@ const Navigation = () => {
             >
               <Phone size={16} />
               <span className="font-inter font-medium">Contact Us</span>
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -215,20 +217,23 @@ const Navigation = () => {
                   transition={{ delay: navItems.length * 0.1 }}
                   className="px-6 py-3"
                 >
-                  <Link
-                    to="/contact"
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setIsContactModalOpen(true);
+                    }}
                     className="flex items-center space-x-2 bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 w-fit"
-                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <Phone size={16} />
                     <span className="font-inter font-medium">Contact Us</span>
-                  </Link>
+                  </button>
                 </motion.div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </motion.nav>
   );
 };

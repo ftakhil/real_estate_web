@@ -4,11 +4,13 @@ import { MoveRight, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { image1, image3, image4, image14, image13 } from '../assets/imageImports';
+import ContactModal from "./ContactModal";
 
 const WeddingHero = () => {
   const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(0);
   const [index, setIndex] = useState(0);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const words = ["COASTAL", "AFFORDABLE", "BAJA", "DREAM", "BEACH", "LIFESTYLE"];
 
   const heroImages = useMemo(() => [
@@ -149,7 +151,7 @@ const WeddingHero = () => {
               <Button
                 size="lg"
                 className="bg-white text-black hover:bg-gray-100 font-inter px-8"
-                onClick={() => navigate('/contact')}
+                onClick={() => setIsContactModalOpen(true)}
               >
                 Schedule Weekend Tour
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -175,6 +177,7 @@ const WeddingHero = () => {
           />
         </div>
       </motion.div>
+      <ContactModal isOpen={isContactModalOpen} onClose={() => setIsContactModalOpen(false)} />
     </div>
   );
 };

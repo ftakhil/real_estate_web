@@ -20,6 +20,7 @@ import Ownership from "../pages/development/Ownership";
 import InTheNews from "../pages/development/InTheNews";
 import ProjectStatus from "../pages/development/ProjectStatus";
 import Careers from "../pages/development/Careers";
+import LeadQualificationForm from "../components/LeadQualificationForm";
 
 const AnimatedRoutes = () => {
     const location = useLocation();
@@ -45,6 +46,8 @@ const AnimatedRoutes = () => {
                 <Route path="/development/in-the-news" element={<PageTransition><InTheNews /></PageTransition>} />
                 <Route path="/development/project-status" element={<PageTransition><ProjectStatus /></PageTransition>} />
                 <Route path="/development/careers" element={<PageTransition><Careers /></PageTransition>} />
+
+                <Route path="/qualify" element={<LeadQualificationForm />} />
 
                 <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
             </Routes>
