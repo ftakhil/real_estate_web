@@ -100,6 +100,14 @@ const LeadQualificationForm = () => {
         </motion.div>
       </AnimatePresence>
 
+      {/* Close/Back Button - Always visible */}
+      <Link
+        to="/"
+        className="absolute top-6 right-6 z-50 rounded-full bg-white/10 p-2 text-white transition-all hover:bg-white/20 hover:scale-110"
+      >
+        <X className="h-6 w-6" />
+      </Link>
+
       {/* Content Container */}
       <div className="relative z-20 w-full max-w-2xl px-6">
         <AnimatePresence mode="wait">
@@ -111,12 +119,6 @@ const LeadQualificationForm = () => {
               exit={{ opacity: 0, y: -20 }}
               className="text-center text-white"
             >
-              <Link
-                to="/"
-                className="absolute top-6 right-6 z-50 rounded-full bg-white/10 p-2 text-white transition-all hover:bg-white/20 hover:scale-110"
-              >
-                <X className="h-6 w-6" />
-              </Link>
 
               <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
                 Discover your dream property in <span className="text-amber-200">Baja California</span>
