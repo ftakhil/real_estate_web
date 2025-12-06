@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Check, ChevronRight } from "lucide-react";
+import { ArrowRight, Check, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -64,7 +65,7 @@ const LeadQualificationForm = () => {
   const handleOptionSelect = (option: string) => {
     const currentQuestion = questions[step - 1];
     setAnswers((prev) => ({ ...prev, [currentQuestion.id]: option }));
-    
+
     // Auto advance after short delay for better UX
     setTimeout(() => {
       setStep((prev) => prev + 1);
@@ -110,8 +111,15 @@ const LeadQualificationForm = () => {
               exit={{ opacity: 0, y: -20 }}
               className="text-center text-white"
             >
+              <Link
+                to="/"
+                className="absolute top-6 right-6 z-50 rounded-full bg-white/10 p-2 text-white transition-all hover:bg-white/20 hover:scale-110"
+              >
+                <X className="h-6 w-6" />
+              </Link>
+
               <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
-                Discover your dream property in <span className="text-primary">Baja California Sur</span>
+                Discover your dream property in <span className="text-amber-200">Baja California</span>
               </h1>
               <p className="mb-8 text-lg text-gray-200 md:text-xl">
                 Answer a few quick questions to help us find the perfect match for you.
@@ -147,7 +155,7 @@ const LeadQualificationForm = () => {
                   />
                 </div>
               </div>
-              
+
               <h2 className="mb-8 text-3xl font-bold text-white">
                 {questions[step - 1].question}
               </h2>
@@ -240,8 +248,8 @@ const LeadQualificationForm = () => {
                 We're curating a list of properties just for you.<br />
                 Check your email shortly.
               </p>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="mt-8 border-white text-white hover:bg-white hover:text-black"
                 onClick={() => window.location.reload()} // Or navigate home
               >
